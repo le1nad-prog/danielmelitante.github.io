@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daniel Melitante | Portfolio</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primaryFont: "Poppins", sans-serif;
+
+      --primaryColor: #0A4C70;
+
+      --backgroundColor: #0F131A;
+
+      --cardBgColor: #181C25;
+      --cardBorderColor: #282d39;
+
+      --surfaceColor: #1F2430;
+
+      --primaryTextColor: #E2E4E9;
+      --secondaryTextColor: #818998;
+      --disabledTextColor: #6B7280;
+
+      --successColor: #22C55E;
+      --warningColor: #F59E0B;
+      --dangerColor: #EF4444;
+
+      --cardBorderRadius: 16px;
+      --buttonBorderRadius: 12px;
+
+      --mainGap: 12px;
+
+      --mainPadding: 16px;
+    }
+
+    * {
+      font-family: var(--primaryFont);
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--backgroundColor);
+    }
+
+    .mainContainer {
+      height: calc(100vh - 32px);
+      gap: var(--mainGap);
+      padding: var(--mainPadding);
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      bottom: 16px;
+      width: 240px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--mainGap);
+      z-index: 1;
+    }
+
+    .infoNavCardContainer {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      border: 1px solid var(--cardBorderColor);
+      border-radius: var(--cardBorderRadius);
+      background: var(--cardBgColor);
+      padding: var(--mainPadding);
+      gap: var(--mainGap);
+    }
+
+    .profilePicture {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .name {
+      color: var(--primaryTextColor);
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .bio {
+      font-size: 12px;
+      line-height: 20px;
+      color: var(--secondaryTextColor);
+    }
+
+    .cvButton {
+      width: 100%;
+      color: var(--secondaryTextColor);
+      background-color: transparent;
+      border: 1px solid var(--cardBorderColor);
+      gap: 4px;
+      padding: 8px 16px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--buttonBorderRadius);
+      text-decoration: none;
+    }
+
+    .cvButton:hover {
+      background-color: transparent !important;
+      color: #FFFFFF !important;
+      border: 1px solid var(--primaryColor) !important;
+    }
+
+    .fa-download,
+    .fa-house,
+    .fa-user,
+    .fa-folder-open,
+    .fa-certificate,
+    .fa-moon {
+      font-size: 14px;
+      color: inherit;
+    }
+
+    .cvLabel,
+    .homeLabel,
+    .aboutLabel,
+    .projectsLabel,
+    .certificationLabel,
+    .darkModeLabel {
+      font-size: 14px;
+      color: inherit;
+    }
+
+    .darkModeLabel,
+    .fa-moon {
+      color: var(--secondaryTextColor);
+    }
+
+    .navigation {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .navigation .nav-link {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      height: 40px;
+      color: var(--secondaryTextColor);
+      font-size: 14px;
+      padding: 10px 16px;
+      border-radius: var(--buttonBorderRadius);
+      gap: var(--mainGap);
+      transition: all 0.25s ease;
+    }
+
+    .navigation .nav-link:hover {
+      color: #FFFFFF !important;
+      background-color: var(--surfaceColor) !important;
+    }
+
+    .navigation .nav-link.active {
+      background-color: var(--primaryColor) !important;
+      color: #FFFFFF !important;
+    }
+
+    .darkModeCardContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid var(--cardBorderColor);
+      border-radius: var(--cardBorderRadius);
+      background: var(--cardBgColor);
+      padding: var(--mainPadding);
+      gap: var(--mainGap);
+    }
+
+    .toggleLabel {
+      gap: var(--mainGap);
+    }
+
+    .form-switch .form-check-input {
+      width: 2.75rem;
+      height: 1.4rem;
+      box-shadow: none;
+    }
+
+    .aiChatbot {
+      display: flex;
+      align-items: center;
+      font-size: 15px;
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      padding: 10px 16px;
+      border-radius: var(--buttonBorderRadius);
+      gap: var(--mainGap);
+      background-color: var(--primaryColor);
+      border: none;
+      z-index: 1;
+    }
+
+    .aiChatbot:hover,
+    .aiChatbot:focus,
+    .aiChatbot:active,
+    .aiChatbot.active,
+    .aiChatbot.show {
+      background-color: var(--primaryColor) !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="mainContainer">
+
+    <div class="sidebar">
+
+      <div class="infoNavCardContainer card border-foreground">
+
+        <img src="assets/images/profile.jpg" class="profilePicture">
+        <div class="personalInfo">
+          <h2 class="name m-0">Daniel G. Melitante</h2>
+          <p class="bio text-muted-foreground mt-1 m-0">Aspiring Software Engineer</p>
+        </div>
+        <a href="assets/files/Daniel Melitante.pdf" download="Daniel Melitante.pdf"
+          class="btn btn-primary cvButton border-foreground">
+          <i class="fa-solid fa-download"></i>
+          <span class="cvLabel">CV</span>
+        </a>
+
+        <hr class="m-0 w-100" style="border: 1px solid #30363d;">
+
+        <div class="navigation nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">
+              <i class="fa-solid fa-house"></i>
+              <span class="homeLabel">Home</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fa-solid fa-user"></i>
+              <span class="aboutLabel">About</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fa-solid fa-folder-open"></i>
+              <span class="projectsLabel">Projects</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fa-solid fa-certificate"></i>
+              <span class="certificationLabel">Certification</span>
+            </a>
+          </li>
+        </div>
+
+      </div>
+
+      <div class="darkModeCardContainer card border-foreground">
+
+        <div class="d-flex flex-row justify-content-between align-items-center">
+          <div class="toggleLabel d-flex align-items-center">
+            <i class="fa-solid fa-moon"></i>
+            <span class="darkModeLabel">Dark Mode</span>
+          </div>
+          <div class="form-check form-switch m-0">
+            <input class="form-check-input m-0" type="checkbox" role="switch" id="darkModeToggle" checked>
+          </div>
+        </div>
+
+        <hr class="m-0 w-100" style="border: 1px solid #30363d;">
+
+        <span class="text-center" style="font-size: 12px; color: #6B7280;">
+          © 2026 Daniel Melitante.<br>
+          All rights reserved.
+        </span>
+
+      </div>
+
+    </div>
+
+    <!-- AI Chatbot Button -->
+    <button class="aiChatbot btn btn-primary">
+      <i class="fa-solid fa-comment"></i>
+      <span>Chat with Daniel</span>
+    </button>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

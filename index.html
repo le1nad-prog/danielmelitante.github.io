@@ -11,493 +11,7 @@
   <!-- Stylesheets -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet">
-
-  <style>
-    :root {
-      --primaryFont: "Poppins", sans-serif;
-
-      --primaryColor: #0A4C70;
-
-      --backgroundColor: #0F131A;
-
-      --cardBgColor: #181C25;
-      --cardBorderColor: #282d39;
-
-      --surfaceColor: #1F2430;
-
-      --primaryTextColor: #E2E4E9;
-      --secondaryTextColor: #818998;
-      --disabledTextColor: #6B7280;
-
-      --successColor: #22C55E;
-      --warningColor: #F59E0B;
-      --dangerColor: #EF4444;
-
-      --cardBorderRadius: 16px;
-      --buttonBorderRadius: 12px;
-
-      --mainGap: 12px;
-
-      --mainPadding: 16px;
-    }
-
-    * {
-      font-family: var(--primaryFont);
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background-color: var(--backgroundColor);
-    }
-
-    .mainContainer {
-      height: calc(100vh - 32px);
-      gap: var(--mainGap);
-      padding: var(--mainPadding);
-    }
-
-    .desktopSidebar {
-      position: fixed;
-      top: 16px;
-      left: 16px;
-      bottom: 16px;
-      width: 240px;
-      display: flex;
-      flex-direction: column;
-      gap: var(--mainGap);
-      z-index: 1;
-    }
-
-    .infoNavCardContainer {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      border: 1px solid var(--cardBorderColor);
-      border-radius: var(--cardBorderRadius);
-      background: var(--cardBgColor);
-      padding: var(--mainPadding);
-      gap: var(--mainGap);
-    }
-
-    .profilePicture {
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    .name {
-      color: var(--primaryTextColor);
-      font-size: 15px;
-      font-weight: bold;
-    }
-
-    .bio {
-      font-size: 12px;
-      line-height: 20px;
-      color: var(--secondaryTextColor);
-    }
-
-    .cvButton {
-      width: 100%;
-      color: var(--secondaryTextColor);
-      background-color: transparent;
-      border: 1px solid var(--cardBorderColor);
-      gap: 4px;
-      padding: 8px 16px;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      border-radius: var(--buttonBorderRadius);
-      text-decoration: none;
-    }
-
-    .cvButton:hover {
-      background-color: transparent !important;
-      color: #FFFFFF !important;
-      border: 1px solid var(--primaryColor) !important;
-    }
-
-    .fa-download,
-    .fa-house,
-    .fa-user,
-    .fa-folder-open,
-    .fa-certificate,
-    .fa-moon {
-      font-size: 14px;
-      color: inherit;
-    }
-
-    .cvLabel,
-    .homeLabel,
-    .aboutLabel,
-    .projectsLabel,
-    .certificationLabel,
-    .darkModeLabel {
-      font-size: 14px;
-      color: inherit;
-    }
-
-    .darkModeLabel,
-    .fa-moon {
-      color: var(--secondaryTextColor);
-    }
-
-    .navigation {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .navigation .nav-link {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: flex-start;
-      height: 40px;
-      color: var(--secondaryTextColor);
-      font-size: 14px;
-      padding: 10px 16px;
-      border-radius: var(--buttonBorderRadius);
-      gap: var(--mainGap);
-      transition: all 0.25s ease;
-    }
-
-    .navigation .nav-link:hover {
-      color: #FFFFFF !important;
-      background-color: var(--surfaceColor) !important;
-    }
-
-    .navigation .nav-link.active {
-      background-color: var(--primaryColor) !important;
-      color: #FFFFFF !important;
-    }
-
-    .darkModeCardContainer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      border: 1px solid var(--cardBorderColor);
-      border-radius: var(--cardBorderRadius);
-      background: var(--cardBgColor);
-      padding: var(--mainPadding);
-      gap: var(--mainGap);
-    }
-
-    .toggleLabel {
-      gap: var(--mainGap);
-    }
-
-    .form-switch .form-check-input {
-      width: 2.75rem;
-      height: 1.4rem;
-      background-color: var(--primaryColor);
-      border: var(--primaryColor);
-      box-shadow: none;
-    }
-
-    .aiChatbotButton {
-      display: flex;
-      align-items: center;
-      position: fixed;
-      bottom: 16px;
-      right: 16px;
-      padding: 10px 16px;
-      border-radius: var(--buttonBorderRadius);
-      gap: var(--mainGap);
-      background-color: var(--primaryColor);
-      border: none;
-      z-index: 1;
-    }
-
-    .aiChatbotMobileButton i {
-      font-size: 15px;
-    }
-
-    .aiChatbotButton:hover,
-    .aiChatbotButton:focus,
-    .aiChatbotButton:active,
-    .aiChatbotButton.active,
-    .aiChatbotButton.show {
-      background-color: var(--primaryColor) !important;
-    }
-
-    .burgerButton {
-      display: none;
-      position: fixed;
-      top: 16px;
-      left: 16px;
-      width: 44px;
-      height: 44px;
-      border: 1px solid var(--cardBorderColor);
-      border-radius: var(--buttonBorderRadius);
-      background-color: var(--cardBgColor);
-      color: var(--primaryTextColor);
-      z-index: 2;
-    }
-
-    .burgerButton:hover {
-      background-color: var(--surfaceColor);
-      color: #FFFFFF;
-    }
-
-    .mobileSidebar {
-      height: 100dvh;
-      border-radius: 0 16px 16px 0;
-      background-color: var(--cardBgColor);
-      padding: var(--mainPadding);
-    }
-
-    .mobileSidebarContent {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      margin-top: 16px;
-      gap: var(--mainGap);
-    }
-
-    .closeButton {
-      position: fixed;
-      top: 16px;
-      left: 16px;
-      width: 44px;
-      height: 44px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 1px solid var(--cardBorderColor);
-      border-radius: var(--buttonBorderRadius);
-      background-color: var(--cardBgColor);
-      color: var(--primaryTextColor);
-      z-index: 3;
-    }
-
-    .closeButton:hover {
-      background-color: var(--surfaceColor);
-      color: #FFFFFF;
-    }
-
-    .chatbotContainer {
-      width: 360px;
-      height: 520px;
-      position: fixed;
-      bottom: 80px;
-      right: 16px;
-      display: flex;
-      flex-direction: column;
-      background-color: var(--cardBgColor);
-      border: 1px solid var(--cardBorderColor);
-      border-radius: var(--cardBorderRadius);
-      overflow: hidden;
-      z-index: 10;
-    }
-
-    .chatbotHeader {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: var(--mainPadding);
-    }
-
-    .chatbotProfile {
-      display: flex;
-      align-items: center;
-      gap: var(--mainGap);
-    }
-
-    .chatbotProfile img {
-      width: 44px;
-      height: 44px;
-    }
-
-    .chatbotName {
-      display: block;
-      color: var(--primaryTextColor);
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .chatbotStatus {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .onlineIndicator {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: var(--successColor);
-    }
-
-    .onlineLabel {
-      font-size: 12px;
-      color: var(--secondaryTextColor);
-    }
-
-    .chatbotCloseButton {
-      color: var(--secondaryTextColor);
-      border: none;
-      padding: 0;
-    }
-
-    .chatbotCloseButton:hover {
-      color: #FFFFFF;
-    }
-
-    .chatbotMessages {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: var(--mainGap);
-      padding: var(--mainPadding);
-      overflow-y: auto;
-    }
-
-    .messageContainer {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-    }
-
-    .messageAvatar {
-      width: 28px;
-      height: 28px;
-
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    .messageContent {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .messageSender {
-      color: var(--primaryTextColor);
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    .messageBubble {
-      max-width: 240px;
-      padding: 12px 16px;
-      background-color: var(--primaryColor);
-      color: #FFFFFF;
-      font-size: 13px;
-      line-height: 1.6;
-      border-radius: 16px 16px 16px 4px;
-    }
-
-    .chatbotInputContainer {
-      display: flex;
-      align-items: center;
-      gap: var(--mainGap);
-
-      padding: var(--mainPadding);
-    }
-
-    .chatbotInput {
-      flex: 1;
-      min-width: 0;
-      padding: 10px 14px;
-      background-color: var(--surfaceColor);
-      color: var(--primaryTextColor);
-      border: 1px solid var(--cardBorderColor);
-      border-radius: var(--buttonBorderRadius);
-      outline: none;
-    }
-
-    .chatbotInput::placeholder {
-      font-size: 14px;
-      color: var(--secondaryTextColor);
-    }
-
-    .chatbotInput:focus {
-      border-color: var(--primaryColor);
-    }
-
-    .chatbotSendButton {
-      width: 44px;
-      height: 44px;
-      flex-shrink: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: var(--primaryColor);
-      border: none;
-      border-radius: var(--buttonBorderRadius);
-    }
-
-    .chatbotSendButton:hover,
-    .chatbotSendButton:focus,
-    .chatbotSendButton:active {
-      background-color: var(--primaryColor) !important;
-    }
-
-    .chatbotSendButton i {
-      color: var(--primaryTextColor);
-    }
-
-    @media (max-width: 1440px) {
-
-      .desktopSidebar {
-        display: none;
-      }
-
-      .burgerButton {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-    }
-
-    @media (max-width: 768px) {
-
-      .chatbotContainer {
-        width: 340px;
-        height: 450px;
-
-        right: 16px;
-        bottom: 80px;
-      }
-    }
-
-    @media (max-width: 425px) {
-
-      .aiChatbotButton span {
-        display: none;
-      }
-
-      .aiChatbotButton {
-          width: 52px;
-          height: 52px;
-          border-radius: 50%;
-          justify-content: center;
-      }
-
-      .burgerButton {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .chatbotContainer {
-        width: calc(100vw - 32px);
-        height: 450px;
-
-        right: 16px;
-        bottom: 88px;
-      }
-    }
-  </style>
+  <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -757,23 +271,180 @@
 
     </div>
 
+    <!-- Right Panel -->
+    <div class="rightPanel">
+
+      <div class="dateTimeContainer">
+        <div class="date">
+          <i class="fa-solid fa-calendar"></i>
+          <span id="currentDate"></span>
+        </div>
+        <div class="time">
+          <i class="fa-solid fa-clock"></i>
+          <span id="currentTime"></span>
+        </div>
+      </div>
+
+      <div class="aboutMeContainer">
+        <div class="aboutMeHeader">
+          <div class="aboutMeTitle">
+            <i class="fa-solid fa-user"></i>
+            <span>About Me</span>
+          </div>
+          <a href="#" class="aboutMeLink">
+            Read More
+          </a>
+        </div>
+        <div class="aboutMeContent">
+          <div class="aboutMeItem">
+            <div class="aboutMeIcon">
+              <i class="fa-solid fa-briefcase"></i>
+            </div>
+            <div class="aboutMeDetails">
+              <span class="aboutMeLabel">
+                OJT Trainee at
+              </span>
+              <span class="aboutMeValue">
+                City Government of Sto. Tomas Batangas
+              </span>
+            </div>
+          </div>
+          <div class="aboutMeItem">
+            <div class="aboutMeIcon">
+              <i class="fa-solid fa-stopwatch"></i>
+            </div>
+            <div class="aboutMeDetails">
+              <span class="aboutMeLabel">
+                Years Coding
+              </span>
+              <span class="aboutMeValue">
+                4 years (Since 2022)
+              </span>
+            </div>
+          </div>
+          <div class="aboutMeItem">
+            <div class="aboutMeIcon">
+              <i class="fa-solid fa-book-open"></i>
+            </div>
+            <div class="aboutMeDetails">
+              <span class="aboutMeLabel">
+                Learning
+              </span>
+              <span class="aboutMeValue">
+                Laravel, Node.js, Tailwind CSS
+              </span>
+            </div>
+          </div>
+          <div class="aboutMeItem">
+            <div class="aboutMeIcon">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div class="aboutMeDetails">
+              <span class="aboutMeLabel">
+                Home Town
+              </span>
+              <span class="aboutMeValue">
+                Tanauan, Batangas, Philippines
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="techStackContainer">
+        <div class="techStackHeader">
+          <div class="techStackTitle">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Tech Stack</span>
+          </div>
+        </div>
+        <div class="techStackWrapper">
+          <div class="techStackTrack">
+            <!-- Set 1 -->
+            <span class="techBadge html">HTML</span>
+            <span class="techBadge css">CSS</span>
+            <span class="techBadge javascript">JavaScript</span>
+            <span class="techBadge react">React</span>
+            <span class="techBadge laravel">Laravel</span>
+            <span class="techBadge tailwind">Tailwind</span>
+            <span class="techBadge node">Node.js</span>
+
+            <!-- Set 2 -->
+            <span class="techBadge html">HTML</span>
+            <span class="techBadge css">CSS</span>
+            <span class="techBadge javascript">JavaScript</span>
+            <span class="techBadge react">React</span>
+            <span class="techBadge laravel">Laravel</span>
+            <span class="techBadge tailwind">Tailwind</span>
+            <span class="techBadge node">Node.js</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="topSkillsContainer">
+        <div class="topSkillsHeader">
+          <div class="topSkillsTitle">
+            <i class="fa-solid fa-grip"></i>
+            <span>Top Skills</span>
+          </div>
+        </div>
+        <div class="topSkillsContent">
+          <div class="skillCard">
+            <i class="fa-solid fa-border-all"></i>
+            <span>Web Development</span>
+          </div>
+          <div class="skillCard">
+            <i class="fa-solid fa-wrench"></i>
+            <span>Front End</span>
+          </div>
+          <div class="skillCard">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Back End</span>
+          </div>
+          <div class="skillCard">
+            <i class="fa-regular fa-compass"></i>
+            <span>UI / UX Design</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contactContainer">
+        <div class="contactHeader">
+          <div class="contactTitle">
+            <i class="fa-solid fa-comment"></i>
+            <span>Get in Touch</span>
+          </div>
+        </div>
+        <div class="contactContent">
+          <a href="#" class="contactButton">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="#" class="contactButton">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="#" class="contactButton">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="#" class="contactButton">
+            <i class="fa-regular fa-envelope"></i>
+          </a>
+          <a href="#" class="contactButton">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+        </div>
+        <span class="contactDescription">
+          Feel free to connect with me!
+        </span>
+      </div>
+
+    </div>
+
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-  <script>
-
-    var chatbot = document.getElementById("chatbot");
-
-    document.getElementById("chatbotButton").addEventListener("click", function () {
-        chatbot.classList.remove("d-none");
-    });
-
-    document.getElementById("chatbotClose").addEventListener("click", function () {
-        chatbot.classList.add("d-none");
-    });
-
-  </script>
+  <script src="assets/js/script.js"></script>
+  <script src="assets/js/dateTime.js"></script>
 
 </body>
 

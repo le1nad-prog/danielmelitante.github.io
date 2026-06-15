@@ -37,24 +37,41 @@ body {
 }
 
 .mainContainer {
-    height: calc(100vh - 32px);
+    display: flex;
+    flex-direction: row;
     gap: var(--mainGap);
     padding: var(--mainPadding);
 }
 
+/* .mainContainer {
+    height: calc(100vh - 32px);
+    gap: var(--mainGap);
+    padding: var(--mainPadding);
+} */
+
 /* Desktop and Mobile Sidebar */
 
 .desktopSidebar {
-    position: fixed;
-    top: 16px;
-    left: 16px;
-    bottom: 16px;
     width: 240px;
+    height: calc(100vh - 32px);
+    flex-shrink: 0;
+    position: sticky;
+    top: 16px;
     display: flex;
     flex-direction: column;
     gap: var(--mainGap);
     z-index: 1;
 }
+
+/* .desktopSidebar {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    bottom: 16px;
+    width: 240px;
+    
+    
+} */
 
 .infoNavCardContainer {
     height: 100vh;
@@ -433,18 +450,203 @@ body {
     color: var(--primaryTextColor);
 }
 
+/* Content Area */
+
+.contentArea {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: var(--mainGap);
+}
+
+.mainContent{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    width:100%;
+}
+
+.welcomeBanner{
+    height:210px;
+    border-radius:20px;
+    background:linear-gradient(
+        135deg,
+        #103f5c,
+        #121f4e
+    );
+    border:1px solid #1f2f4f;
+    padding:30px;
+    display:flex;
+    align-items:flex-end;
+    position:relative;
+    overflow:hidden;
+}
+
+.welcomeBanner::before{
+    content:'';
+    width:250px;
+    height:250px;
+    border-radius:50%;
+    position:absolute;
+    right:120px;
+    top:20px;
+    background:rgba(255,255,255,.03);
+}
+
+.welcomeBanner::after{
+    content:'';
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    position:absolute;
+    right:40px;
+    top:15px;
+    border:1px solid rgba(255,255,255,.05);
+}
+
+.welcomeContent h1{
+    color:white;
+    font-size:42px;
+    font-weight:700;
+}
+
+.overviewSection,
+.projectSection{
+    background:#101827;
+    border:1px solid #1f2f4f;
+    border-radius:20px;
+    padding:20px;
+}
+
+.sectionTitle{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:white;
+    margin-bottom:18px;
+    font-size:20px;
+    font-weight:600;
+}
+
+.sectionTitle i{
+    color:#2e9be8;
+}
+
+.overviewCards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+}
+
+.overviewCard{
+    background:#1d4764;
+    border-radius:15px;
+    padding:20px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.cardIcon{
+    width:45px;
+    height:45px;
+    border-radius:12px;
+    background:rgba(255,255,255,.08);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.cardIcon i{
+    color:white;
+    font-size:18px;
+}
+
+.cardInfo h2{
+    color:white;
+    font-size:32px;
+}
+
+.cardInfo p{
+    color:#d0d5dd;
+    font-size:14px;
+}
+
+.projectContainer{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.projectCard{
+    overflow:hidden;
+    border-radius:18px;
+    background:#161f30;
+    border:1px solid #26334e;
+}
+
+.projectBanner{
+    height:160px;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.bannerOne{
+    background:linear-gradient(
+        135deg,
+        #186a73,
+        #234da5
+    );
+}
+
+.bannerTwo{
+    background:linear-gradient(
+        135deg,
+        #7c1fc9,
+        #3244b8
+    );
+}
+
+.projectFolder{
+    font-size:70px;
+    color:rgba(255,255,255,.12);
+}
+
+.status{
+    position:absolute;
+    left:15px;
+    bottom:15px;
+    background:rgba(0,0,0,.35);
+    color:white;
+    font-size:12px;
+    padding:6px 12px;
+    border-radius:20px;
+}
+
+.projectDetails{
+    padding:20px;
+}
+
+.projectDetails h3{
+    color:white;
+    font-size:22px;
+    margin-bottom:5px;
+}
+
+.projectDetails p{
+    color:#aab4c5;
+    font-size:14px;
+}
+
 /* Right Panel */
 
 .rightPanel {
-    height: 100%;
     width: 300px;
-}
-
-.rightPanel {
-    position: fixed;
+    flex-shrink: 0;
     top: 16px;
-    right: 16px;    
-    width: 300px;
+    right: 16px;
     display: flex;
     flex-direction: column;
     gap: var(--mainGap);
@@ -472,7 +674,7 @@ body {
 
 .date i, .time i{
     font-size: 14px;
-    color: var(--primaryTextColor);
+    color: var(--secondaryTextColor);
 }
 
 .date span, .time span{
@@ -505,7 +707,7 @@ body {
 .aboutMeTitle span,
 .aboutMeTitle i {
     font-size: 14px;
-    color: var(--primaryTextColor);
+    color: var(--secondaryTextColor);
 }
 
 .aboutMeLink {
@@ -514,6 +716,10 @@ body {
     text-decoration: none;
     color: var(--primaryColor);
     transition: opacity 0.2s ease;
+}
+
+.aboutMeLink:hover {
+    text-decoration: underline;
 }
 
 .aboutMeContent {
@@ -542,7 +748,7 @@ body {
 
 .aboutMeIcon i {
     font-size: 14px;
-    color: var(--primaryTextColor);
+    color: var(--secondaryTextColor);
 }
 
 .aboutMeDetails {
@@ -566,17 +772,14 @@ body {
 .techStackContainer {
     display: flex;
     flex-direction: column;
-
     padding: var(--mainPadding);
-
     border: 1px solid var(--cardBorderColor);
     border-radius: var(--cardBorderRadius);
-
     background: var(--cardBgColor);
 }
 
 .techStackHeader {
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 .techStackTitle {
@@ -588,21 +791,21 @@ body {
 .techStackTitle span,
 .techStackTitle i {
     font-size: 14px;
-    color: var(--primaryTextColor);
+    color: var(--secondaryTextColor);
 }
 
 .techStackWrapper {
     overflow: hidden;
-    width: 100%;
+    margin-left: calc(var(--mainPadding) * -1);
+    margin-right: calc(var(--mainPadding) * -1);
+    padding-top: 4px;
 }
 
 .techStackTrack {
     display: flex;
     align-items: center;
     gap: 10px;
-
     width: max-content;
-
     animation: techStackScroll 20s linear infinite;
 }
 
@@ -612,23 +815,17 @@ body {
 
 .techBadge {
     padding: 6px 14px;
-
     font-size: 13px;
     font-weight: 500;
     white-space: nowrap;
-
     border-radius: 999px;
-
     background-color: var(--surfaceColor);
-
     transition: 0.2s ease;
 }
 
 .techBadge:hover {
     transform: translateY(-2px);
 }
-
-/* Tech Colors */
 
 .techBadge.html {
     color: #E34F26;
@@ -675,73 +872,12 @@ body {
     }
 }
 
-.topSkillsContainer {
-    display: flex;
-    flex-direction: column;
-
-    padding: var(--mainPadding);
-
-    border: 1px solid var(--cardBorderColor);
-    border-radius: var(--cardBorderRadius);
-
-    background: var(--cardBgColor);
-}
-
-.topSkillsHeader {
-    margin-bottom: 16px;
-}
-
-.topSkillsTitle {
-    display: flex;
-    align-items: center;
-    gap: var(--mainGap);
-}
-
-.topSkillsTitle span,
-.topSkillsTitle i {
-    font-size: 14px;
-    color: var(--primaryTextColor);
-}
-
-.topSkillsContent {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-}
-
-.skillCard {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    min-height: 80px;
-    padding: 12px 8px;
-    text-align: center;
-    border: 1px solid var(--cardBorderColor);
-    border-radius: var(--buttonBorderRadius);
-    background: var(--surfaceColor);
-}
-
-.skillCard i {
-    font-size: 14px;
-    color: var(--primaryTextColor);
-}
-
-.skillCard span {
-    font-size: 12px;
-    color: var(--secondaryTextColor);
-}
-
 .contactContainer {
     display: flex;
     flex-direction: column;
-
     padding: var(--mainPadding);
-
     border: 1px solid var(--cardBorderColor);
     border-radius: var(--cardBorderRadius);
-
     background: var(--cardBgColor);
 }
 
@@ -758,32 +894,25 @@ body {
 .contactTitle span,
 .contactTitle i {
     font-size: 14px;
-    color: var(--primaryTextColor);
+    color: var(--secondaryTextColor);
 }
 
 .contactContent {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    margin-bottom: 16px;
 }
 
 .contactButton {
     width: 42px;
     height: 42px;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     text-decoration: none;
-
     border: 1px solid var(--cardBorderColor);
     border-radius: 50%;
-
-    background: var(--surfaceColor);
-
+    background: transparent;
     transition: 0.2s ease;
 }
 
@@ -798,8 +927,20 @@ body {
 
 .contactDescription {
     text-align: center;
-
     font-size: 13px;
+    color: var(--secondaryTextColor);
+}
+
+.contactStatus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.contactStatus span:last-child {
+    font-size: 12px;
     color: var(--secondaryTextColor);
 }
 

@@ -17,12 +17,17 @@ function updateDateTime() {
       hour12: true
     };
 
-    document.getElementById("currentDate").textContent =
+    var currentDate =
       now.toLocaleDateString("en-PH", dateOptions);
 
-    document.getElementById("currentTime").textContent =
+    var currentTime =
       now.toLocaleTimeString("en-PH", timeOptions);
-  }
 
-  updateDateTime();
-  setInterval(updateDateTime, 1000);
+    document.getElementById("currentDate").textContent = currentDate;
+    document.getElementById("currentTime").textContent = currentTime;
+
+    document.getElementById("mobileCurrentDate").textContent = currentDate;
+}
+
+updateDateTime();
+setInterval(updateDateTime, 1000);

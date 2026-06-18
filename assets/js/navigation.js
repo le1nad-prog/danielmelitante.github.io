@@ -18,6 +18,9 @@ function setActiveNavButton(buttonName) {
 
 function loadPage(content = 'home', buttonName = 'homeButton') {
 
+    localStorage.setItem('currentPage', content);
+    localStorage.setItem('currentButton', buttonName);
+
     clearActiveNavButtons();
     setActiveNavButton(buttonName);
 
@@ -26,7 +29,7 @@ function loadPage(content = 'home', buttonName = 'homeButton') {
     fetch(`content/${content}.html`)
         .then(response => response.text())
         .then(data => {
-        contents.innerHTML = data;
+            contents.innerHTML = data;
         })
         .catch(error => console.error('Error fetching file:', error));
 }

@@ -215,12 +215,19 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
   <script src="assets/js/script.js"></script>
-  <script src="assets/js/dateTime.js"></script>
   <script src="assets/js/navigation.js"></script>
 
   <script>
-    loadPage();
-  </script>
+
+    const currentPage =
+        localStorage.getItem('currentPage') || 'home';
+
+    const currentButton =
+        localStorage.getItem('currentButton') || 'homeButton';
+
+    loadPage(currentPage, currentButton);
+
+</script>
 
 </body>
 

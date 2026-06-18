@@ -58,16 +58,6 @@ body {
     z-index: 1;
 }
 
-/* .desktopSidebar {
-    position: fixed;
-    top: 16px;
-    left: 16px;
-    bottom: 16px;
-    width: 240px;
-    
-    
-} */
-
 .infoNavCardContainer {
     height: 100vh;
     display: flex;
@@ -400,7 +390,6 @@ body {
     display: flex;
     align-items: center;
     gap: var(--mainGap);
-
     padding: var(--primaryPadding);
 }
 
@@ -455,7 +444,9 @@ body {
     gap: var(--mainGap);
 }
 
-.mainContent{
+/* Home Styling */
+
+.homeMainContent{
     flex: 1;
     min-width: 0;
     display: flex;
@@ -622,10 +613,10 @@ body {
     color:rgba(255,255,255,.12);
 }
 
-.status{
+.projectStatus{
     position:absolute;
-    left:15px;
-    bottom:15px;
+    top:15px;
+    right:15px;
     background:rgba(0,0,0,.35);
     color: var(--primaryTextColor);
     font-size:12px;
@@ -658,7 +649,6 @@ body {
     flex-wrap: nowrap;
     scrollbar-width: none;
     -ms-overflow-style: none;
-
     margin-left: calc(var(--primaryPadding) * -1);
     margin-right: calc(var(--primaryPadding) * -1);
     padding-left: var(--primaryPadding);
@@ -718,9 +708,9 @@ body {
     color: white;
 }
 
-/* Right Panel */
+/* Home Right Panel */
 
-.rightPanel {
+.homeRightPanel {
     width: 300px;
     flex-shrink: 0;
     top: 16px;
@@ -729,35 +719,6 @@ body {
     flex-direction: column;
     gap: var(--mainGap);
     z-index: 1;
-}
-
-.dateTimeContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    border: 1px solid var(--cardBorderColor);
-    border-radius: var(--cardBorderRadius);
-    background: var(--cardBgColor);
-    padding: var(--primaryPadding);
-    gap: var(--mainGap);
-}
-
-.date, .time {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: var(--mainGap);
-}
-
-.date i, .time i{
-    font-size: 14px;
-    color: var(--secondaryTextColor);
-}
-
-.date span, .time span{
-    font-size: 14px;
-    color: var(--primaryTextColor);
 }
 
 .aboutMeContainer {
@@ -1002,11 +963,11 @@ body {
 
 .contactButton:hover {
     transform: translateY(-2px);
-    border: 1px solid var(--primaryColor);
+    border: 1px solid white;
 }
 
 .contactButton:hover i {
-    color: var(--primaryColor);
+    color: white;
 }
 
 .contactButton i {
@@ -1031,6 +992,270 @@ body {
 .contactStatus span:last-child {
     font-size: 12px;
     color: var(--secondaryTextColor);
+}
+
+/* Project Styling */
+
+.projectMainContent {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--mainGap);
+}
+
+.projectsBanner {
+    height: 180px;
+    border-radius: var(--cardBorderRadius);
+    background: linear-gradient(
+        135deg,
+        #103f5c,
+        #121f4e
+    );
+    border: 1px solid #1f2f4f;
+    padding: var(--secondaryPadding);
+    display: flex;
+    align-items: end;
+    position: relative;
+    overflow: hidden;
+}
+
+.projectsBanner::before {
+    content: "";
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    background: rgba(255,255,255,.03);
+}
+
+.projectsBannerContent {
+    z-index: 1;
+}
+
+.bannerLabel {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    color: var(--secondaryTextColor);
+    font-size: 14px;
+}
+
+.projectsBannerContent h1 {
+    color: var(--primaryTextColor);
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.projectsBannerContent p {
+    font-size: 14px;
+    color: var(--secondaryTextColor);
+    margin-bottom: 0;
+}
+
+/* Filter & Search  */
+
+.projectFilterContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--mainGap);
+    padding: var(--primaryPadding);
+    border: 1px solid var(--cardBorderColor);
+    border-radius: var(--cardBorderRadius);
+    background: var(--cardBgColor);
+}
+
+.searchInput::placeholder {
+    font-size: 14px;
+    color: var(--secondaryTextColor);
+}
+
+.projectCategories {
+    display: flex;
+    gap: var(--mainGap);
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-left: calc(var(--primaryPadding) * -1);
+    margin-right: calc(var(--primaryPadding) * -1);
+    padding-left: var(--primaryPadding);
+    padding-right: var(--primaryPadding);
+    scrollbar-width: none;
+}
+
+.projectCategories::-webkit-scrollbar {
+    display: none;
+}
+
+.categoryButton {
+    flex-shrink: 0;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 999px;
+    background: var(--surfaceColor);
+    color: var(--secondaryTextColor);
+    border: 1px solid var(--cardBorderColor);
+    font-size: 12px;
+    transition: .2s ease;
+}
+
+.categoryButton:hover {
+    color: white;
+}
+
+.categoryButton.active {
+    border: 1px solid var(--primaryColor);
+    background: var(--primaryColor);
+    color: white;
+}
+
+.projectSearch {
+    width: 300px;
+    display: flex;
+    align-items: center;
+    gap: var(--mainGap);
+    padding: 10px 14px;
+    border: 1px solid var(--cardBorderColor);
+    border-radius: 16px;
+    background: var(--surfaceColor);
+}
+
+.projectSearch i {
+    color: var(--secondaryTextColor);
+}
+
+.projectSearch input {
+    width: 300px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--primaryTextColor);
+    font-size: 14px;
+}
+
+/* Project Right Panel */
+
+.projectRightPanel {
+    width: 300px;
+    flex-shrink: 0;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--mainGap);
+    z-index: 1;
+}
+
+.opportunityContainer,
+.projectOverviewContainer,
+.techBreakdownContainer {
+    padding: var(--primaryPadding);
+    border: 1px solid var(--cardBorderColor);
+    border-radius: var(--cardBorderRadius);
+    background: var(--cardBgColor);
+}
+
+.opportunityTitle {
+    font-size: 14px;
+    color: var(--secondaryTextColor);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: var(--mainGap);
+}
+
+.opportunityList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mainGap);
+}
+
+.opportunityItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.opportunityItem i {
+    color: var(--successColor);
+}
+
+.opportunityItem span {
+    color: var(--secondaryTextColor);
+    font-size: 12px;
+}
+
+.projectOverviewTitle {
+    font-size: 14px;
+    color: var(--secondaryTextColor);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: var(--mainGap);
+}
+
+.projectStats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--mainGap);
+}
+
+.projectStatCard {
+    padding: 16px;
+    border-radius: 14px;
+    text-align: center;
+    background: #1d4764;
+}
+
+.projectStatsValue {
+    font-size: 20px;
+    color: white;
+    margin-bottom: 4px;
+}
+
+.projectStatsLabel {
+    color: white;
+    font-size: 12px;
+}
+
+.techBreakdownTitle {
+    font-size: 14px;
+    color: var(--secondaryTextColor);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: var(--mainGap);
+}
+
+.techBreakdownItem:not(:last-child) {
+    margin-bottom: 16px;
+}
+
+.techBreakdownHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 8px;
+}
+
+.techBreakdownValue {
+    color: var(--secondaryTextColor);
+    font-size: 12px;
+}
+
+.progress {
+    height: 8px;
+    background: var(--surfaceColor);
+}
+
+.progress-bar {
+    background: var(--primaryColor);
 }
 
 @media (max-width: 1440px) {
@@ -1063,21 +1288,7 @@ body {
         flex-direction: column;
     }
 
-    .mainContent {
-        width: 100%;
-    }
-
-    .mobileDate {
-        display: flex;
-        align-items: center;
-        gap: var(--mainGap);
-    }
-
-    .dateTimeContainer {
-        display: none;
-    }
-
-    .rightPanel {
+    .mainContent, .homeRightPanel, .projectRightPanel {
         width: 100%;
     }
 

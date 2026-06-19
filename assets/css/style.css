@@ -916,6 +916,97 @@ body {
     }
 }
 
+.currentFocusContainer,
+.availabilityContainer {
+    display: flex;
+    flex-direction: column;
+    padding: var(--primaryPadding);
+    border: 1px solid var(--cardBorderColor);
+    border-radius: var(--cardBorderRadius);
+    background: var(--cardBgColor);
+}
+
+.currentFocusHeader,
+.availabilityHeader {
+    margin-bottom: 16px;
+}
+
+.currentFocusTitle,
+.availabilityTitle {
+    display: flex;
+    align-items: center;
+    gap: var(--mainGap);
+}
+
+.currentFocusTitle span,
+.currentFocusTitle i,
+.availabilityTitle span,
+.availabilityTitle i {
+    font-size: 14px;
+    color: var(--secondaryTextColor);
+}
+
+.currentFocusContent {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.focusItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.focusIndicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--primaryColor);
+    flex-shrink: 0;
+}
+
+.focusText {
+    font-size: 13px;
+    color: var(--primaryTextColor);
+}
+
+.availabilityContent {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.availabilityStatus {
+    display: flex;
+    align-items: center;
+    gap: var(--mainGap);
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--cardBorderColor);
+}
+
+.availabilityStatus span:last-child {
+    font-size: 13px;
+    color: var(--primaryTextColor);
+    font-weight: 500;
+}
+
+.availabilityItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.availabilityItem span:first-child {
+    font-size: 13px;
+    color: var(--secondaryTextColor);
+}
+
+.availabilityItem span:last-child {
+    color: var(--successColor);
+    font-weight: 600;
+}
+
 .contactContainer {
     display: flex;
     flex-direction: column;
@@ -981,17 +1072,11 @@ body {
     color: var(--secondaryTextColor);
 }
 
-.contactStatus {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 16px;
-}
-
-.contactStatus span:last-child {
+.contactLabel {
+    text-align: center;
     font-size: 12px;
     color: var(--secondaryTextColor);
+    margin-top: 16px;
 }
 
 /* Project Styling */
@@ -1057,24 +1142,15 @@ body {
     margin-bottom: 0;
 }
 
-/* Filter & Search  */
-
 .projectFilterContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: var(--mainGap);
-    padding: var(--primaryPadding);
-    border: 1px solid var(--cardBorderColor);
-    border-radius: var(--cardBorderRadius);
-    background: var(--cardBgColor);
+    flex-wrap: wrap;
 }
 
-.searchInput::placeholder {
-    font-size: 14px;
-    color: var(--secondaryTextColor);
-}
-
+/* Categories */
 .projectCategories {
     display: flex;
     gap: var(--mainGap);
@@ -1095,34 +1171,46 @@ body {
 .categoryButton {
     flex-shrink: 0;
     padding: 8px 16px;
-    border: none;
+    border: 1px solid var(--cardBorderColor);
     border-radius: 999px;
     background: var(--surfaceColor);
     color: var(--secondaryTextColor);
-    border: 1px solid var(--cardBorderColor);
     font-size: 12px;
     transition: .2s ease;
 }
 
 .categoryButton:hover {
-    color: white;
+    color: #fff;
 }
 
 .categoryButton.active {
-    border: 1px solid var(--primaryColor);
+    border-color: var(--primaryColor);
     background: var(--primaryColor);
-    color: white;
+    color: #fff;
 }
 
-.projectSearch {
-    width: 300px;
+/* Controls */
+.projectControls {
     display: flex;
     align-items: center;
     gap: var(--mainGap);
+    flex-wrap: wrap;
+}
+
+/* Search */
+.projectSearch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
     padding: 10px 14px;
+
     border: 1px solid var(--cardBorderColor);
-    border-radius: 16px;
-    background: var(--surfaceColor);
+    border-radius: var(--cardBorderRadius);
+    background: var(--cardBgColor);
+
+    min-width: 240px;
+    flex: 1;
 }
 
 .projectSearch i {
@@ -1130,12 +1218,85 @@ body {
 }
 
 .projectSearch input {
-    width: 300px;
+    width: 100%;
     border: none;
     outline: none;
     background: transparent;
     color: var(--primaryTextColor);
     font-size: 14px;
+}
+
+/* Actions wrapper */
+.projectActions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 43px;
+    padding: 4px;
+    border: 1px solid var(--cardBorderColor);
+    border-radius: var(--cardBorderRadius);
+    background: var(--cardBgColor);
+
+    flex-shrink: 0;
+}
+
+/* Divider */
+.divider {
+    width: 1px;
+    height: 24px;
+    background: var(--cardBorderColor);
+}
+
+/* Sort Button */
+.sortButton {
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 0 14px;
+    border: none;
+    border-radius: 12px;
+
+    background: transparent;
+    color: var(--secondaryTextColor);
+
+    transition: 0.2s ease;
+}
+
+.sortButton:hover {
+    background: var(--surfaceColor);
+    color: var(--primaryTextColor);
+}
+
+/* View Toggle */
+.viewToggleGroup {
+    display: flex;
+    gap: 4px;
+}
+
+.viewToggleButton {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 12px;
+    background: transparent;
+    color: var(--secondaryTextColor);
+    transition: 0.2s ease;
+}
+
+.viewToggleButton:hover {
+    background: var(--surfaceColor);
+    color: var(--primaryTextColor);
+}
+
+.viewToggleButton.active {
+    background: var(--primaryColor);
+    color: #fff;
 }
 
 /* Project Right Panel */
@@ -1151,43 +1312,12 @@ body {
     z-index: 1;
 }
 
-.opportunityContainer,
 .projectOverviewContainer,
 .techBreakdownContainer {
     padding: var(--primaryPadding);
     border: 1px solid var(--cardBorderColor);
     border-radius: var(--cardBorderRadius);
     background: var(--cardBgColor);
-}
-
-.opportunityTitle {
-    font-size: 14px;
-    color: var(--secondaryTextColor);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: var(--mainGap);
-}
-
-.opportunityList {
-    display: flex;
-    flex-direction: column;
-    gap: var(--mainGap);
-}
-
-.opportunityItem {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.opportunityItem i {
-    color: var(--successColor);
-}
-
-.opportunityItem span {
-    color: var(--secondaryTextColor);
-    font-size: 12px;
 }
 
 .projectOverviewTitle {
@@ -1240,7 +1370,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     margin-bottom: 8px;
 }
 
@@ -1256,6 +1385,40 @@ body {
 
 .progress-bar {
     background: var(--primaryColor);
+}
+
+.featuredProjectContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.featuredProjectCard {
+    overflow: hidden;
+    border: 1px solid var(--cardBorderColor);
+    border-radius: var(--cardBorderRadius);
+    background: var(--cardBgColor);
+}
+
+.featuredProjectCard .projectBanner {
+    height: 100px;
+}
+
+.featuredProjectCard .projectDetails {
+    padding: var(--primaryPadding);
+}
+
+.featuredProjectCard .projectDetails h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.featuredProjectCard .projectDetails p {
+    font-size: 12px;
+    margin-bottom: 16px;
+}
+
+.featuredProjectCard .viewButton {
+    width: 100%;
 }
 
 @media (max-width: 1440px) {
@@ -1279,6 +1442,25 @@ body {
 
     .actionButtons {
         flex-direction: column;
+    }
+    
+    .projectFilterContainer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .projectCategories {
+        order: 2;
+    }
+
+    .projectControls {
+        order: 1;
+        width: 100%;
+    }
+
+    .projectSearch {
+        min-width: 0;
+        flex: 1;
     }
 }
 

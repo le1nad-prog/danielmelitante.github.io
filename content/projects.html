@@ -1,6 +1,5 @@
 <!-- Project Main Content -->
 
-
 <div class="projectMainContent">
 
     <div class="projectsBanner">
@@ -15,77 +14,79 @@
     </div>
 
     <div class="projectFilterContainer">
+
         <div class="projectCategories">
             <button class="categoryButton active">All</button>
-        </div>
-        <div class="projectSearch">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="search" class="searchInput" placeholder="Search projects...">
+            <button class="categoryButton">Web</button>
+            <button class="categoryButton">Full Stack</button>
+            <button class="categoryButton">UI/UX</button>
         </div>
 
+        <div class="projectControls">
+            <div class="projectSearch">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="search" class="searchInput" placeholder="Search projects...">
+                </div>
+                <div class="projectActions">
+
+                    <button class="sortButton">
+                        <i class="fa-solid fa-arrow-down-wide-short"></i>
+                        <span>Sort</span>
+                    </button>
+                    <div class="divider">|</div>
+                    <div class="viewToggleGroup">
+                        <button class="viewToggleButton active">
+                            <i class="fa-solid fa-grip"></i>
+                        </button>
+
+                        <button class="viewToggleButton">
+                            <i class="fa-solid fa-list"></i>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="projectContainer">
+            <div class="projectCard">
+                <div class="projectBanner bannerOne">
+                    <div class="projectStatus">
+                        In Progress
+                    </div>
+                        <i class="fa-regular fa-folder-open projectFolder"></i>
+                    </div>
+                    <div class="projectDetails">
+                        <h3>Portfolio Hub</h3>
+                        <p>A personal portfolio website built to showcase my projects, skills, and experience as an aspiring software
+                            engineer.</p>
+                    <div class="projectTechStacks">
+                        <span class="projectTechBadge html">HTML</span>
+                        <span class="projectTechBadge css">CSS</span>
+                        <span class="projectTechBadge javascript">JavaScript</span>
+                        <span class="projectTechBadge bootstrap">Bootstrap</span>
+                    </div>
+                    <div class="actionButtons">
+                        <a target="_blank" href="https://le1nad-prog.github.io/danielmelitante.github.io/" class="viewButton">
+                        <i class="fa-solid fa-globe"></i>
+                        <span>View</span>
+                        </a>
+
+                        <a target="_blank" href="https://github.com/le1nad-prog/danielmelitante.github.io" class="documentationButton">
+                        <i class="fa-brands fa-github"></i>
+                        <span>Documentation</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="projectContainer">
-        <div class="projectCard">
-            <div class="projectBanner bannerOne">
-            <div class="projectStatus">
-                In Progress
-            </div>
-                <i class="fa-regular fa-folder-open projectFolder"></i>
-            </div>
-            <div class="projectDetails">
-                <h3>Portfolio Hub</h3>
-                <p>A personal portfolio website built to showcase my projects, skills, and experience as an aspiring software
-                    engineer.</p>
-            <div class="projectTechStacks">
-                <span class="projectTechBadge html">HTML</span>
-                <span class="projectTechBadge css">CSS</span>
-                <span class="projectTechBadge javascript">JavaScript</span>
-                <span class="projectTechBadge bootstrap">Bootstrap</span>
-            </div>
-            <div class="actionButtons">
-                <a target="_blank" href="https://le1nad-prog.github.io/danielmelitante.github.io/" class="viewButton">
-                <i class="fa-solid fa-globe"></i>
-                <span>View</span>
-                </a>
-
-                <a target="_blank" href="https://github.com/le1nad-prog/danielmelitante.github.io" class="documentationButton">
-                <i class="fa-brands fa-github"></i>
-                <span>Documentation</span>
-                </a>
-            </div>
-            </div>
-        </div>
-    </div>
-
 </div>
-
 
 <!-- Project Right Panel -->
  
 <div class="projectRightPanel">
-
-    <!-- Open To Opportunities -->
-    <div class="opportunityContainer">
-        <div class="opportunityTitle">
-            <i class="fa-solid fa-briefcase"></i>
-            <span>Open To</span>
-        </div>
-        <div class="opportunityList">
-            <div class="opportunityItem">
-                <i class="fa-solid fa-circle-check"></i>
-                <span class="opportunityLabel">Work Opportunities</span>
-            </div>
-            <div class="opportunityItem">
-                <i class="fa-solid fa-circle-check"></i>
-                <span class="opportunityLabel">Freelance Projects</span>
-            </div>
-            <div class="opportunityItem">
-                <i class="fa-solid fa-circle-check"></i>
-                <span class="opportunityLabel">Collaboration Projects</span>
-            </div>
-        </div>
-    </div>
 
     <!-- Project Overview -->
     <div class="projectOverviewContainer">
@@ -150,6 +151,45 @@
         </div>
     </div>
 
+    <!-- Featured Project -->
+    <div class="featuredProjectContainer">
+
+        <div class="featuredProjectCard">
+
+            <div class="projectBanner bannerOne">
+                <div class="projectStatus">
+                    Featured
+                </div>
+
+                <i class="fa-regular fa-folder-open projectFolder"></i>
+            </div>
+
+            <div class="projectDetails">
+
+                <h3>Portfolio Hub</h3>
+
+                <p>
+                    A personal portfolio website built to showcase my projects, skills, and experience as an aspiring software
+                    engineer.
+                </p>
+
+                <a
+                    target="_blank"
+                    href="https://le1nad-prog.github.io/danielmelitante.github.io/"
+                    class="viewButton">
+
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    <span>View Live</span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Contacts -->
     <div class="contactContainer">
         <div class="contactHeader">
             <div class="contactTitle">
@@ -174,9 +214,8 @@
                 <i class="fa-brands fa-linkedin-in"></i>
             </a>
         </div>
-        <div class="contactStatus">
-            <span class="onlineIndicator"></span>
-            <span>Open to opportunities</span>
+        <div class="contactLabel">
+            <span>Let's connect and build something great</span>
         </div>
     </div>
 

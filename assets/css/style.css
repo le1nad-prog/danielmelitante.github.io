@@ -463,7 +463,7 @@ body {
 }
 
 .welcomeBanner{
-    min-height: 200px;
+    min-height: 180px;
     border-radius:20px;
     background:linear-gradient(
         135deg,
@@ -1073,6 +1073,220 @@ body {
     margin-top: 16px;
 }
 
+/* About Styling */
+
+.aboutMainContent{
+    flex:1;
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+    gap:var(--mainGap);
+}
+
+.aboutBannerContent {
+    min-height: 180px;
+    border-radius: var(--cardBorderRadius);
+    background: linear-gradient(
+        135deg,
+        #103f5c,
+        #121f4e
+    );
+    border: 1px solid #1f2f4f;
+    padding: var(--secondaryPadding);
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: start;
+    position: relative;
+    overflow: hidden;
+}
+
+.aboutBannerContent::before {
+    content: "";
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    background: rgba(255,255,255,.03);
+}
+
+.aboutBannerContent {
+    z-index: 1;
+}
+
+.aboutBannerContent h1 {
+    color: var(--primaryTextColor);
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.aboutBannerContent p {
+    font-size: 14px;
+    color: var(--secondaryTextColor);
+    margin-bottom: 0;
+}
+
+.aboutRightPanel{
+    width:300px;
+    flex-shrink:0;
+    display:flex;
+    flex-direction:column;
+    gap:var(--mainGap);
+}
+
+.aboutSection {
+    border:1px solid var(--cardBorderColor);
+    border-radius:var(--cardBorderRadius);
+    background:var(--cardBgColor);
+    padding:var(--primaryPadding);
+}
+
+.servicesGrid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:var(--mainGap);
+}
+
+.serviceCard{
+    background:var(--surfaceColor);
+    border-radius:14px;
+    padding:20px;
+}
+
+.serviceCard i{
+    color:var(--primaryColor);
+    font-size:20px;
+    margin-bottom:12px;
+}
+
+.serviceCard h3{
+    color:white;
+    font-size:15px;
+    margin-bottom:8px;
+}
+
+.serviceCard p{
+    color:var(--secondaryTextColor);
+    font-size:13px;
+    margin:0;
+}
+
+.galleryGrid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:var(--mainGap);
+}
+
+.galleryCard{
+    height:180px;
+    overflow:hidden;
+    border-radius:14px;
+}
+
+.galleryCard img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* About Right Panel */
+
+.quickStatsContainer {
+    padding: var(--primaryPadding);
+    border: 1px solid var(--cardBorderColor);
+    border-radius: var(--cardBorderRadius);
+    background: var(--cardBgColor);
+}
+
+.quickStatsTitle {
+    font-size: 14px;
+    color: var(--secondaryTextColor);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: var(--mainGap);
+}
+
+.quickStats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--mainGap);
+}
+
+.quickStatsCard {
+    padding: 16px;
+    border-radius: 14px;
+    text-align: center;
+    background: #1d4764;
+}
+
+.quickStatsValue {
+    font-size: 20px;
+    color: white;
+    margin-bottom: 4px;
+}
+
+.quickStatsLabel {
+    color: white;
+    font-size: 12px;
+    line-height: 1.25;
+}
+
+.highlightsGrid,
+.platformGrid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.highlightBadge,
+.platformBadge{
+    padding:8px 12px;
+    border-radius:999px;
+    background:#19253a;
+    border:1px solid var(--cardBorderColor);
+    font-size:12px;
+    color:var(--primaryTextColor);
+}
+
+.interestContainer{
+    border:1px solid var(--cardBorderColor);
+    border-radius:var(--cardBorderRadius);
+    background:var(--cardBgColor);
+    padding:var(--primaryPadding);
+}
+
+.interestTitle {
+    font-size: 14px;
+    color: var(--secondaryTextColor);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: var(--mainGap);
+}
+
+.interestGrid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: var(--mainGap);
+}
+
+.interestBadge{
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    background: var(--surfaceColor);
+    color: var(--primaryTextColor);
+    font-size: 12px;
+    display: flex;
+    gap: var(--mainGap);
+    justify-content: start;
+    align-items: center;
+}
+
 /* Project Styling */
 
 .projectMainContent {
@@ -1601,13 +1815,13 @@ body {
 }
 
 .certificationBadges{
-    display:flex;
-    gap:8px;
-    overflow-x:auto;
-    overflow-y:hidden;
-    flex-wrap:nowrap;
-    scrollbar-width:none;
-    -ms-overflow-style:none;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     margin-right: calc(var(--primaryPadding) * -1);
     padding-right: var(--primaryPadding);
 }
@@ -1631,14 +1845,14 @@ body {
 }
 
 .verifiedBadge{
-    background:rgba(34,197,94,.15);
-    color:var(--successColor);
-    border:1px solid rgba(34,197,94,.25);
+    background: rgba(34,197,94,.15);
+    color: var(--successColor);
+    border: 1px solid rgba(34,197,94,.25);
 }
 
 .categoryBadge{
-    background:rgba(255,255,255,.05);
-    color:var(--secondaryTextColor);
+    background: rgba(255,255,255,.05);
+    color: var(--secondaryTextColor);
 }
 
 /* Certification Right Panel */
@@ -1881,7 +2095,7 @@ body {
         flex-direction: column;
     }
 
-    .homeMainContent, .homeRightPanel, .projectMainContent, .projectRightPanel, .certificationMainContent, .certificationRightPanel {
+    .homeMainContent, .homeRightPanel, .projectMainContent, .projectRightPanel, .certificationMainContent, .certificationRightPanel, .aboutMainContent, .aboutRightPanel {
         width: 100%;
     }
 
@@ -1932,11 +2146,11 @@ body {
         font-size: 20px;
     }
 
-    .projectsBannerContent h1, .certificationBannerContent h1 {
+    .projectsBannerContent h1, .certificationBannerContent h1, .aboutBannerContent h1{
         margin-bottom: 0;
     }
 
-    .projectsBannerContent p, .certificationBannerContent p {
+    .projectsBannerContent p, .certificationBannerContent p, .aboutBannerContent p{
         display: none;
     }
 

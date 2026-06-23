@@ -463,7 +463,7 @@ body {
 }
 
 .welcomeBanner{
-    min-height: 180px;
+    min-height: 200px;
     border-radius:20px;
     background:linear-gradient(
         135deg,
@@ -1084,7 +1084,7 @@ body {
 }
 
 .aboutBannerContent {
-    min-height: 180px;
+    min-height: 200px;
     border-radius: var(--cardBorderRadius);
     background: linear-gradient(
         135deg,
@@ -1130,48 +1130,134 @@ body {
 }
 
 .aboutRightPanel{
-    width:300px;
-    flex-shrink:0;
-    display:flex;
-    flex-direction:column;
-    gap:var(--mainGap);
+    width: 300px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--mainGap);
 }
 
-.aboutSection {
-    border:1px solid var(--cardBorderColor);
-    border-radius:var(--cardBorderRadius);
-    background:var(--cardBgColor);
-    padding:var(--primaryPadding);
+.aboutSection, .journeySection {
+    border: 1px solid var(--cardBorderColor);
+    border-radius: var(--cardBorderRadius);
+    background: var(--cardBgColor);
+    padding: var(--primaryPadding);
 }
 
 .servicesGrid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:var(--mainGap);
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: var(--mainGap);
 }
 
 .serviceCard{
-    background:var(--surfaceColor);
-    border-radius:14px;
-    padding:20px;
+    background: var(--surfaceColor);
+    border-radius: 14px;
+    padding: 20px;
 }
 
 .serviceCard i{
-    color:var(--primaryColor);
-    font-size:20px;
-    margin-bottom:12px;
+    color: var(--primaryColor);
+    font-size: 20px;
+    margin-bottom: 12px;
 }
 
 .serviceCard h3{
-    color:white;
-    font-size:15px;
-    margin-bottom:8px;
+    color: white;
+    font-size: 14px;
+    margin-bottom: 8px;
 }
 
 .serviceCard p{
+    color: var(--secondaryTextColor);
+    font-size: 12px;
+    margin: 0;
+}
+
+.journeyContent{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.journeyContent p{
+    font-size: 14px;
     color:var(--secondaryTextColor);
-    font-size:13px;
+    line-height:1.8;
     margin:0;
+}
+
+.journeyTimeline{
+    position:relative;
+    padding-left:30px;
+    display:flex;
+    flex-direction:column;
+    gap: var(--mainGap);
+}
+
+.journeyTimeline::before{
+    content:"";
+    position:absolute;
+    left:6px;
+    top:12px;
+    bottom:0;
+    width:2px;
+    background:rgba(255,255,255,.08);
+}
+
+.journeyItem{
+    position:relative;
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    gap:20px;
+}
+
+.journeyIndicator{
+    position:absolute;
+    left:-30px;
+    top:3px;
+    width:14px;
+    height:14px;
+    border-radius:50%;
+    background:var(--primaryColor);
+    border:2px solid #0f172a;
+    z-index:2;
+}
+
+.journeyInfo{
+    flex:1;
+}
+
+.journeyInfo h3{
+    margin:0 0 4px;
+    font-size: 14px;
+    color:white;
+    line-height:1.4;
+}
+
+.journeyInfo p{
+    margin:0;
+    font-size:12px;
+    color:var(--secondaryTextColor);
+    line-height:1.5;
+}
+
+.journeyMeta{
+    flex-shrink:0;
+    padding-top:2px;
+}
+
+.journeyDate{
+    display:inline-flex;
+    align-items:center;
+    padding:6px 12px;
+    border-radius:999px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    color:var(--secondaryTextColor);
+    font-size:12px;
+    white-space:nowrap;
 }
 
 .galleryGrid{
@@ -1298,7 +1384,7 @@ body {
 }
 
 .projectsBanner {
-    min-height: 180px;
+    min-height: 200px;
     border-radius: var(--cardBorderRadius);
     background: linear-gradient(
         135deg,
@@ -1637,7 +1723,7 @@ body {
 }
 
 .certificationBanner {
-    min-height: 180px;
+    min-height: 200px;
     border-radius: var(--cardBorderRadius);
     background: linear-gradient(
         135deg,

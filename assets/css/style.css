@@ -27,6 +27,15 @@
     --secondaryPadding: 20px;
 }
 
+body.lightMode{
+
+    --backgroundColor:#f8fafc;
+    --cardColor:#ffffff;
+    --primaryTextColor:#111827;
+    --secondaryTextColor:#6b7280;
+    --borderColor:#dbe2ea;
+}
+
 * {
     font-family: var(--primaryFont);
     margin: 0;
@@ -35,6 +44,7 @@
 
 body {
     background-color: var(--backgroundColor);
+    color:var(--primaryTextColor);
 }
 
 .mainContainer {
@@ -575,7 +585,7 @@ body {
 
 .projectContainer{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(3,1fr);
     gap: var(--mainGap);
 }
 
@@ -1209,7 +1219,7 @@ body {
     position:relative;
     display:flex;
     justify-content:space-between;
-    align-items: center;
+    align-items: start;
     gap:20px;
 }
 
@@ -1245,7 +1255,9 @@ body {
 
 .journeyMeta{
     flex-shrink:0;
-    padding-top:2px;
+    display: flex;
+    align-items: start;
+    justify-content: end;
 }
 
 .journeyDate{
@@ -1888,7 +1900,7 @@ body {
 
 .certificationContent h3{
     color: var(--primaryTextColor);
-    font-size: 15px;
+    font-size: 16px;
     margin-bottom: 8px;
 }
 
@@ -1922,7 +1934,10 @@ body {
     flex-shrink: 0;
     padding: 4px 10px;
     border-radius: 999px;
-    font-size: 11px;
+    font-size: 12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 .certificateId{
@@ -2131,11 +2146,14 @@ body {
         align-items: center;
     }
 
-    .projectContainer {
-       grid-template-columns: repeat(2,1fr);
-    }
-
     .certificationContainer{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media (max-width: 1200px) {
+
+    .projectContainer {
         grid-template-columns: repeat(2,1fr);
     }
 }
@@ -2186,7 +2204,7 @@ body {
     }
 
     .projectContainer {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2,1fr);
     }
 
     .certificationFilterContainer {
@@ -2220,8 +2238,17 @@ body {
 
 @media (max-width: 576px) {
     
+    .mainContainer {
+        padding: 12px;
+    }
+
+    .burgerButton {
+        top: 12px;
+        left: 12px;
+    }
+    
     .overviewCards {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2,1fr);
     }
 
     .welcomeBanner {
@@ -2232,15 +2259,15 @@ body {
         font-size: 20px;
     }
 
+    .projectContainer {
+        grid-template-columns: repeat(1,1fr);
+    }
+
     .projectsBannerContent h1, .certificationBannerContent h1, .aboutBannerContent h1{
         margin-bottom: 0;
     }
 
     .projectsBannerContent p, .certificationBannerContent p, .aboutBannerContent p{
-        display: none;
-    }
-
-    .sortButton span{
         display: none;
     }
 
@@ -2262,8 +2289,16 @@ body {
 
 @media (max-width: 425px) {
 
+    .mainContainer {
+        padding: 10px;
+    }
+
     .aiChatbotButton span {
         display: none;
+    }
+
+    .overviewCards {
+        grid-template-columns: repeat(1,1fr);
     }
 
     .aiChatbotButton {
@@ -2277,6 +2312,8 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
+        top: 10px;
+        left: 10px;
     }
 
     .chatbotContainer {

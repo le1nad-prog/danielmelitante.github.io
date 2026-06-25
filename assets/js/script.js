@@ -10,49 +10,49 @@ document.getElementById("chatbotClose").addEventListener("click", function () {
     chatbot.classList.add("d-none");
 });
 
-// Theme Functionality
+// // Theme Functionality
 
-function applyTheme(theme) {
+// function applyTheme(theme) {
 
-    document.body.classList.toggle(
-        "lightMode",
-        theme === "light"
-    );
+//     document.body.classList.toggle(
+//         "lightMode",
+//         theme === "light"
+//     );
 
-    localStorage.setItem("theme", theme);
+//     localStorage.setItem("theme", theme);
 
-    const isDark = theme === "dark";
+//     const isDark = theme === "dark";
 
-    document.getElementById("darkModeToggle").checked = isDark;
+//     document.getElementById("darkModeToggle").checked = isDark;
 
-    const mobileToggle =
-        document.getElementById("mobileDarkModeToggle");
+//     const mobileToggle =
+//         document.getElementById("mobileDarkModeToggle");
 
-    if (mobileToggle) {
-        mobileToggle.checked = isDark;
-    }
-}
+//     if (mobileToggle) {
+//         mobileToggle.checked = isDark;
+//     }
+// }
 
-const savedTheme = localStorage.getItem("theme") || "dark";
+// const savedTheme = localStorage.getItem("theme") || "dark";
 
-applyTheme(savedTheme);
+// applyTheme(savedTheme);
 
-document
-    .getElementById("darkModeToggle")
-    .addEventListener("change", function () {
+// document
+//     .getElementById("darkModeToggle")
+//     .addEventListener("change", function () {
 
-    applyTheme(
-        this.checked ? "dark" : "light"
-    );
+//     applyTheme(
+//         this.checked ? "dark" : "light"
+//     );
 
-});
+// });
 
-document
-    .getElementById("mobileDarkModeToggle")
-    .addEventListener("change", function () {
+// document
+//     .getElementById("mobileDarkModeToggle")
+//     .addEventListener("change", function () {
 
-    applyTheme(
-        this.checked ? "dark" : "light"
-    );
+//     applyTheme(
+//         this.checked ? "dark" : "light"
+//     );
 
-});
+// });

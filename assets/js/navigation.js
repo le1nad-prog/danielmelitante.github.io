@@ -30,6 +30,10 @@ function loadPage(content = 'home', buttonName = 'homeButton') {
         .then(response => response.text())
         .then(data => {
             contents.innerHTML = data;
+
+            if(content === "projects") {
+                loadProjects();
+            }
         })
         .catch(error => console.error('Error fetching file:', error));
 }

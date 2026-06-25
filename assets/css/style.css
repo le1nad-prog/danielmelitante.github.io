@@ -866,7 +866,7 @@ body {
     transition: 0.2s ease;
 }
 
-.techBadge:hover {
+.techStackTrack .techBadge:hover {
     transform: translateY(-2px);
 }
 

@@ -48,3 +48,44 @@ function loadProjects() {
 
     projectContainer.innerHTML = html;
 }
+
+function loadCertifications() {
+
+    const certificationContainer = document.getElementById("certificationContainer");
+
+    if (!certificationContainer) return;
+    if (!data.certifications) return;
+
+    let html = "";
+
+    data.certifications.forEach(certification => {
+
+        html += `
+            <div class="certificationCard">
+                <div class="certificationIcon">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+                <div class="certificationContent">
+                    <h3>${certification.title}</h3>
+                    <div class="certificationMeta">
+                        <span>${certification.platform}</span>
+                        <span>${certification.dateEarned}</span>
+                    </div>
+                    <div class="certificationBadges">
+                        <span class="certificateId">
+                            ${certification.certificateId}
+                        </span>
+                        <span class="verifiedBadge">
+                            ${certification.status}
+                        </span>
+                        <span class="categoryBadge">
+                            ${certification.category}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    certificationContainer.innerHTML = html;
+}

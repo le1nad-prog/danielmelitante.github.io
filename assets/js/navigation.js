@@ -34,6 +34,10 @@ function loadPage(content = 'home', buttonName = 'homeButton') {
             if(content === "projects") {
                 loadProjects();
             }
+
+            if (content === "certifications") {
+                loadCertifications();
+            }
         })
         .catch(error => console.error('Error fetching file:', error));
 }

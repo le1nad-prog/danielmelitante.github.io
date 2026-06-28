@@ -31,12 +31,31 @@ function loadPage(content = 'home', buttonName = 'homeButton') {
         .then(data => {
             contents.innerHTML = data;
 
+            if (content === "home"){
+                loadOverview();
+                loadOngoingProjects();
+            }
+
+            if (content === "about") {
+                loadQuickStats();
+                loadTechBreakdown();
+                loadPlatforms();
+            }
+
             if(content === "projects") {
+                loadProjectCategories();
                 loadProjects();
+                loadProjectStats();
+                loadTechBreakdown();
+                loadFeaturedProject();
             }
 
             if (content === "certifications") {
+                loadCertificationCategories();
                 loadCertifications();
+                loadCertificationStats();
+                loadLatestCertification();
+                loadPlatforms();
             }
         })
         .catch(error => console.error('Error fetching file:', error));

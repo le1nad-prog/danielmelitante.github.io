@@ -12,11 +12,10 @@
     <!-- Project Search, Filter, Sort and View Grids -->
     <div class="projectFilterContainer">
         
-        <div class="projectCategories">
-            <button class="categoryButton active">All</button>
-            <button class="categoryButton">Web</button>
-            <button class="categoryButton">Full Stack</button>
-            <button class="categoryButton">Sample Badges</button>
+        <div class="projectCategories" id="projectCategories">
+            
+            <!-- Project Categories Here-->
+
         </div>
 
         <div class="projectControls">
@@ -67,15 +66,15 @@
         </div>
         <div class="projectStats">
             <div class="projectStatCard">
-                <span class="projectStatsValue">10</span>
+                <span class="projectStatsValue" id="totalProjects">0</span>
                 <span class="projectStatsLabel">Total</span>
             </div>
             <div class="projectStatCard">
-                <span class="projectStatsValue">8</span>
+                <span class="projectStatsValue" id="completedProjects">0</span>
                 <span class="projectStatsLabel">Completed</span>
             </div>
             <div class="projectStatCard">
-                <span class="projectStatsValue">2</span>
+                <span class="projectStatsValue" id="activeProjects">0</span>
                 <span class="projectStatsLabel">Active</span>
             </div>
         </div>
@@ -87,61 +86,15 @@
             <i class="fa-solid fa-layer-group"></i>
             <span>Tech Breakdown</span>
         </div>
-        <div class="techBreakdownItem">
-            <div class="techBreakdownHeader">
-                <span class="projectTechBadge javascript">
-                    JavaScript / React
-                </span>
-                <span class="techBreakdownValue">4 Projects</span>
-            </div>
-            <div class="progress">
-                <div class="progress-bar" style="width:70%"></div>
-            </div>
-        </div>
-        <div class="techBreakdownItem">
-            <div class="techBreakdownHeader">
-                <span class="projectTechBadge laravel">
-                    Laravel / PHP
-                </span>
-                <span class="techBreakdownValue">3 Projects</span>
-            </div>
-            <div class="progress">
-                <div class="progress-bar" style="width:55%"></div>
-            </div>
-        </div>
-        <div class="techBreakdownItem">
-            <div class="techBreakdownHeader">
-                <span class="projectTechBadge html">
-                    HTML / CSS
-                </span>
-                <span class="techBreakdownValue">4 Projects</span>
-            </div>
-            <div class="progress">
-                <div class="progress-bar" style="width:70%"></div>
-            </div>
+        <div class="techBreakdownList" id="techBreakdownList">
+            <!-- Tech Breakdown List -->
         </div>
     </div>
 
     <!-- Featured Project -->
     <div class="featuredProjectContainer">
-        <div class="featuredProjectCard">
-            <div class="projectBanner bannerOne">
-                <div class="projectStatus">
-                    Featured
-                </div>
-                <i class="fa-regular fa-folder-open projectFolder"></i>
-            </div>
-            <div class="projectDetails">
-                <h3>Portfolio Hub</h3>
-                <p>
-                    A personal portfolio website built to showcase my projects, skills, and experience as an aspiring software
-                    engineer.
-                </p>
-                <a target="_blank" href="https://le1nad-prog.github.io/danielmelitante.github.io/" class="viewButton">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    <span>View Live</span>
-                </a>
-            </div>
+        <div id="featuredProject">
+            <!-- Featured Project -->
         </div>
     </div>
 

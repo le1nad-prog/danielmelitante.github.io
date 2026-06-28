@@ -14,7 +14,8 @@ const data = {
                 "Bootstrap"
             ],
             "viewLink": "https://le1nad-prog.github.io/danielmelitante.github.io/",
-            "documentationLink": "https://github.com/le1nad-prog/danielmelitante.github.io"
+            "documentationLink": "https://github.com/le1nad-prog/danielmelitante.github.io",
+            "featured": true
         }
     ],
     "certifications": [
@@ -23,16 +24,10 @@ const data = {
             "title": "Sample Certification",
             "platform": "freeCodeCamp",
             "dateEarned": "June 2026",
-
-            "certificateId": "FCC-RWD-2025-001",
-
-            "status": "Verified",
-
-            "category": "Development",
-
-            "certificateLink": "https://freecodecamp.org/certification/...",
-
-            "featured": true
+            "certificateId": "FCC-RWD-2026-001",
+            "status": "In Progress",
+            "category": "Web Development",
+            "certificateLink": "",
         }
-    ],
+    ]
 };

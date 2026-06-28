@@ -11,12 +11,10 @@
 
     <!-- Filter Bar -->
     <div class="certificationFilterContainer">
-        <div class="certificationCategories">
-            <button class="categoryButton active">All</button>
-            <button class="categoryButton">Development</button>
-            <button class="categoryButton">Design</button>
-            <button class="categoryButton">Cloud</button>
-            <button class="categoryButton">Data</button>
+        <div class="certificationCategories" id="certificationCategories">
+            
+            <!-- Certification Categories Here-->
+
         </div>
         <div class="certificationControls">
             <div class="certificationSearch">
@@ -48,15 +46,15 @@
         </div>
         <div class="certificationStats">
             <div class="certificationStatCard">
-                <span class="certificationStatsValue">10</span>
+                <span class="certificationStatsValue" id="totalCertifications">0</span>
                 <span class="certificationStatsLabel">Total</span>
             </div>
             <div class="certificationStatCard">
-                <span class="certificationStatsValue">8</span>
+                <span class="certificationStatsValue" id="verifiedCertifications">0</span>
                 <span class="certificationStatsLabel">Completed</span>
             </div>
             <div class="certificationStatCard">
-                <span class="certificationStatsValue">2</span>
+                <span class="certificationStatsValue" id="inProgressCertifications">0</span>
                 <span class="certificationStatsLabel">Active</span>
             </div>
         </div>
@@ -68,18 +66,8 @@
             <i class="fa-solid fa-star"></i>
             <span>Latest Certification</span>
         </div>
-        <div class="latestCertificationCard">
-            <div class="latestCertificationIcon">
-                <i class="fa-solid fa-book-open"></i>
-            </div>
-            <div class="latestCertificationInfo">
-                <h3>Sample Certification</h3>
-                <span>freeCodeCamp • June 2026</span>
-                <div class="latestCertificationStatus">
-                    In Progress
-                </div>
-            </div>
-
+        <div id="latestCertification">
+            <!-- Latest Certification -->
         </div>
     </div>
 
@@ -89,47 +77,8 @@
             <i class="fa-solid fa-globe"></i>
             <span>Platforms</span>
         </div>
-        <div class="platformList">
-            <div class="platformItem">
-                <span class="platformName freecodecamp">
-                    freeCodeCamp
-                </span>
-                <span class="platformCount">
-                    0 cert
-                </span>
-            </div>
-            <div class="platformItem">
-                <span class="platformName udemy">
-                    Udemy
-                </span>
-                <span class="platformCount">
-                    0 cert
-                </span>
-            </div>
-            <div class="platformItem">
-                <span class="platformName google">
-                    Google
-                </span>
-                <span class="platformCount">
-                    0 cert
-                </span>
-            </div>
-            <div class="platformItem">
-                <span class="platformName ibm">
-                    IBM (Coursera)
-                </span>
-                <span class="platformCount">
-                    0 cert
-                </span>
-            </div>
-            <div class="platformItem">
-                <span class="platformName scrimba">
-                    Scrimba
-                </span>
-                <span class="platformCount">
-                    0 cert
-                </span>
-            </div>
+        <div class="platformList" id="platformList">
+            <!-- Platform List -->
         </div>
     </div>
 

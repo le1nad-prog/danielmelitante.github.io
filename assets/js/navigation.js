@@ -44,6 +44,7 @@ function loadPage(content = 'home', buttonName = 'homeButton') {
 
             if(content === "projects") {
                 loadProjectCategories();
+                initializeProjectView();
                 loadProjects();
                 loadProjectStats();
                 loadTechBreakdown();

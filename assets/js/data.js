@@ -6,7 +6,7 @@ const data = {
             "description": "A personal portfolio website built to showcase my projects, skills, and experience as an aspiring software engineer.",
             "category": "Web Development",
             "status": "In Progress",
-            "image": "portfolio.png",
+            "image": "image.png",
             "techStacks": [
                 "HTML",
                 "CSS",

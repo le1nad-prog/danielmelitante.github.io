@@ -82,7 +82,7 @@ function loadOngoingProjects() {
                     <div class="projectStatus">
                         ${project.status}
                     </div>
-                    <img src="assets/images/${project.image}" class="projectBannerImage" alt="${project.title}">
+                    <img src="assets/images/projects/${project.image}" class="projectBannerImage" alt="${project.title}">
                 </div>
                 <div class="projectDetails">
                     <h3>${project.title}</h3>
@@ -128,6 +128,29 @@ function loadProjectCategories() {
     `).join("");
 }
 
+function initializeProjectView() {
+
+    const projectContainer = document.getElementById("projectContainer");
+
+    if (!projectContainer) return;
+
+    const gridButton = document.getElementById("gridViewButton");
+
+    const listButton = document.getElementById("listViewButton");
+
+    gridButton.addEventListener("click", () => {
+        projectContainer.classList.remove("listView");
+        gridButton.classList.add("active");
+        listButton.classList.remove("active");
+    });
+
+    listButton.addEventListener("click", () => {
+        projectContainer.classList.add("listView");
+        listButton.classList.add("active");
+        gridButton.classList.remove("active");
+    });
+}
+
 function loadProjects() {
 
     const projectContainer = document.getElementById("projectContainer");
@@ -154,22 +177,26 @@ function loadProjects() {
         html += `
             <div class="projectCard">
                 <div class="projectBanner bannerOne">
-                    <div class="projectStatus">${project.status}</div>
-                    <i class="fa-regular fa-folder-open projectFolder"></i>
+                    <div class="projectStatus">
+                        ${project.status}
+                    </div>
+                    <img src="assets/images/projects/${project.image}" class="projectBannerImage" alt="${project.title}">
                 </div>
                 <div class="projectDetails">
                     <h3>${project.title}</h3>
                     <p>${project.description}</p>
-                    <div class="projectTechStacks">${techStacks}</div>
+                    <div class="projectTechStacks">
+                        ${techStacks}
+                    </div>
                     <div class="actionButtons">
                         <a target="_blank" href="${project.viewLink}" class="viewButton">
-                            <i class="fa-solid fa-globe"></i>
-                            <span>View</span>
-                        </a>
-                        <a target="_blank" href="${project.documentationLink}" class="documentationButton">
-                            <i class="fa-brands fa-github"></i>
-                            <span>Documentation</span>
-                        </a>
+                                <i class="fa-solid fa-globe"></i>
+                                <span>View</span>
+                            </a>
+                            <a target="_blank" href="${project.documentationLink}" class="documentationButton">
+                                <i class="fa-brands fa-github"></i>
+                                <span>Documentation</span>
+                            </a>
                     </div>
                 </div>
             </div>
@@ -283,7 +310,7 @@ function loadFeaturedProject() {
                 <div class="projectStatus">
                     Featured
                 </div>
-                <img src="assets/images/${featured.image}" class="projectBannerImage" alt="${featured.title}">
+                <img src="assets/images/projects/${featured.image}" class="projectBannerImage" alt="${featured.title}">
             </div>
             <div class="projectDetails">
                 <h3>${featured.title}</h3>

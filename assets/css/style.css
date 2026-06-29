@@ -473,7 +473,7 @@ body {
 }
 
 .welcomeBanner{
-    min-height: 200px;
+    min-height: 180px;
     border-radius:20px;
     background:linear-gradient(
         135deg,
@@ -589,19 +589,51 @@ body {
     gap: var(--mainGap);
 }
 
+.projectContainer.listView{
+    display: flex;
+    flex-direction: column;
+}
+
 .projectCard{
     overflow:hidden;
     border-radius:18px;
     background:#161f30;
-    border:1px solid #26334e;
+}
+
+.projectContainer.listView .projectCard{
+    display: flex;
+    flex-direction: row;
 }
 
 .projectBanner{
-    min-height:160px;
-    position:relative;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+}
+
+.projectImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.projectContainer.listView .projectBanner{
+    width: 280px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.projectContainer.listView .projectBannerImage{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .bannerOne{
@@ -618,18 +650,34 @@ body {
 }
 
 .projectStatus{
-    position:absolute;
-    top:15px;
-    right:15px;
-    background:rgba(0,0,0,.35);
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0,0,0,.35);
     color: var(--primaryTextColor);
-    font-size:12px;
+    font-size: 12px;
     padding: 6px 12px;
     border-radius: 20px;
 }
 
+.projectStatusMobile{
+    display: none;
+}
+
+.projectContainer.listView .projectStatusMobile{
+    display:flex;
+}
+
 .projectDetails{
     padding: var(--primaryPadding);
+}
+
+.projectContainer.listView .projectDetails{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: var(--primaryPadding);
+    border: none;
 }
 
 .projectDetails h3{
@@ -670,6 +718,10 @@ body {
     font-weight: 500;
     white-space: nowrap;
     border-radius: 999px;
+}
+
+.projectContainer.listView .actionButtons{
+    width: max-content;
 }
 
 .actionButtons {
@@ -1095,7 +1147,7 @@ body {
 }
 
 .aboutBannerContent {
-    min-height: 200px;
+    min-height: 180px;
     border-radius: var(--cardBorderRadius);
     background: linear-gradient(
         135deg,
@@ -1401,7 +1453,7 @@ body {
 }
 
 .projectsBanner {
-    min-height: 200px;
+    min-height: 180px;
     border-radius: var(--cardBorderRadius);
     background: linear-gradient(
         135deg,
@@ -1708,7 +1760,7 @@ body {
 }
 
 .featuredProjectCard .projectBanner {
-    height: 100px;
+    height: 160px;
 }
 
 .featuredProjectCard .projectDetails {
@@ -1740,7 +1792,7 @@ body {
 }
 
 .certificationBanner {
-    min-height: 200px;
+    min-height: 180px;
     border-radius: var(--cardBorderRadius);
     background: linear-gradient(
         135deg,
@@ -2193,6 +2245,20 @@ body {
         min-width: 0;
     }
 
+    .projectContainer.listView .actionButtons {
+        flex-direction: row;
+    }
+
+    .projectContainer.listView .projectCard{
+        flex-direction: column;
+    }
+
+    .projectContainer.listView .projectBanner{
+        width: 100%;
+        min-width: 100%;
+        height: 200px;
+    }
+
     .actionButtons {
         flex-direction: column;
     }
@@ -2327,5 +2393,9 @@ body {
 
         right: 16px;
         bottom: 88px;
+    }
+
+    .projectContainer.listView .actionButtons {
+        flex-direction: column;
     }
 }

@@ -917,6 +917,9 @@ body {
     border-radius: 999px;
     background-color: var(--surfaceColor);
     transition: 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .techStackTrack .techBadge:hover {
@@ -1657,6 +1660,79 @@ body {
     color: var(--secondaryTextColor);
     align-items: center;
     justify-content: center;
+}
+
+.projectContainer.emptyState{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 420px;
+    gap: 12px;
+}
+
+.emptyStateIcon{
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: #1b2639;
+    border: 1px solid #26334e;
+}
+
+.emptyStateIcon i{
+    font-size: 24px;
+    color: #8794a8;
+}
+
+.emptyStateTitle{
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--primaryTextColor);
+}
+
+.emptyStateDescription{
+    max-width: 360px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--secondaryTextColor);
+}
+
+.emptyStateDescription strong{
+    color: var(--primaryTextColor);
+    font-weight: 600;
+}
+
+.clearSearchButton{
+    margin-top: 8px;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(
+        135deg,
+        #186a73,
+        #234da5
+    );
+    color: var(--primaryTextColor);
+    font-size: 14px;
+    font-weight: 500;
+    cursor:pointer;
+    transition: .2s ease;
+}
+
+.clearSearchButton:hover{
+    transform:translateY(-2px);
+    opacity:.95;
+}
+
+mark{
+    background:#2c8cff33;
+    color: var(--primaryTextColor);
+    border-radius: 3px;
+    padding: 0 2px;
 }
 
 /* Project Right Panel */

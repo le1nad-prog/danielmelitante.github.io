@@ -108,6 +108,17 @@ function loadOngoingProjects() {
     container.innerHTML = html;
 }
 
+function initializeProjectSearch() {
+    
+    const searchInput = document.getElementById("searchInput");
+
+    if (!searchInput) return;
+    searchInput.addEventListener("input", () => {
+        projectState.search = searchInput.value.trim();
+        updateProjects();
+    });
+}
+
 function loadProjectCategories() {
 
     const projectCategories = document.getElementById("projectCategories");
@@ -151,16 +162,58 @@ function initializeProjectView() {
     });
 }
 
-function loadProjects() {
+const projectState = {
+    search: "",
+    sort: "default"
+};
+
+function highlightMatch(text, keyword) {
+    if (!keyword) return text;
+    const regex = new RegExp(`(${keyword})`, "gi");
+    return text.replace(regex, "<mark>$1</mark>");
+}
+
+function renderProjects(projects) {
 
     const projectContainer = document.getElementById("projectContainer");
 
     if (!projectContainer) return;
     if (!data.projects) return;
 
+    if (projects.length === 0) {
+        const keyword = projectState.search;
+        projectContainer.classList.add("emptyState");
+        projectContainer.innerHTML = `
+            <div class="emptyStateIcon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <h2 class="emptyStateTitle">
+                No projects found
+            </h2>
+            <p class="emptyStateDescription">
+                No results found for
+                <strong>"${keyword}"</strong>.
+                Try another keyword or show all projects.
+            </p>
+
+            <button class="clearSearchButton">
+                Clear Search
+            </button>
+        `;
+        document.querySelector(".clearSearchButton")
+            .addEventListener("click", () => {
+                const input = document.getElementById("searchInput");
+                input.value = "";
+                projectState.search = "";
+                updateProjects();
+            });
+        return;
+    }
+    projectContainer.classList.remove("emptyState");
+
     let html = "";
 
-    data.projects.forEach(project => {
+    projects.forEach(project => {
         const techStacks = project.techStacks
             .map(tech => {
                 const techClass = tech
@@ -168,7 +221,7 @@ function loadProjects() {
                     .replace(/\s+/g, "");
                 return `
                     <span class="techBadge ${techClass}">
-                        ${tech}
+                        ${highlightMatch(tech, projectState.search)}
                     </span>
                 `;
             })
@@ -178,25 +231,29 @@ function loadProjects() {
             <div class="projectCard">
                 <div class="projectBanner bannerOne">
                     <div class="projectStatus">
-                        ${project.status}
+                        ${highlightMatch(project.status, projectState.search)}
                     </div>
-                    <img src="assets/images/projects/${project.image}" class="projectBannerImage" alt="${project.title}">
+                    <img
+                        src="assets/images/projects/${project.image}"
+                        class="projectBannerImage"
+                        alt="${project.title}"
+                    >
                 </div>
                 <div class="projectDetails">
-                    <h3>${project.title}</h3>
-                    <p>${project.description}</p>
+                    <h3>${highlightMatch(project.title, projectState.search)}</h3>
+                    <p>${highlightMatch(project.description, projectState.search)}</p>
                     <div class="projectTechStacks">
                         ${techStacks}
                     </div>
                     <div class="actionButtons">
                         <a target="_blank" href="${project.viewLink}" class="viewButton">
-                                <i class="fa-solid fa-globe"></i>
-                                <span>View</span>
-                            </a>
-                            <a target="_blank" href="${project.documentationLink}" class="documentationButton">
-                                <i class="fa-brands fa-github"></i>
-                                <span>Documentation</span>
-                            </a>
+                            <i class="fa-solid fa-globe"></i>
+                            <span>View</span>
+                        </a>
+                        <a target="_blank" href="${project.documentationLink}" class="documentationButton">
+                            <i class="fa-brands fa-github"></i>
+                            <span>Documentation</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -204,6 +261,48 @@ function loadProjects() {
     });
 
     projectContainer.innerHTML = html;
+}
+
+function loadProjects() {
+
+    renderProjects(data.projects);
+    initializeProjectSearch();
+
+    const searchInput = document.getElementById("searchInput");
+
+    if (searchInput) {
+        searchInput.addEventListener("input", () => {
+            projectState.search = searchInput.value.trim();
+            updateProjects();
+        });
+        searchInput.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                searchInput.blur();
+            }
+        });
+    }
+}
+
+function updateProjects() {
+
+    let projects = [...data.projects];
+
+    if (projectState.search !== "") {
+        const keyword = projectState.search.toLowerCase();
+
+        projects = projects.filter(project =>
+            project.title.toLowerCase().includes(keyword) ||
+            project.description.toLowerCase().includes(keyword) ||
+            project.category.toLowerCase().includes(keyword) ||
+            project.status.toLowerCase().includes(keyword) ||
+            project.techStacks.some(tech =>
+                tech.toLowerCase().includes(keyword)
+            )
+        );
+    }
+
+    renderProjects(projects);
 }
 
 function loadTechBreakdown() {

@@ -108,17 +108,6 @@ function loadOngoingProjects() {
     container.innerHTML = html;
 }
 
-function initializeProjectSearch() {
-    
-    const searchInput = document.getElementById("searchInput");
-
-    if (!searchInput) return;
-    searchInput.addEventListener("input", () => {
-        projectState.search = searchInput.value.trim();
-        updateProjects();
-    });
-}
-
 function loadProjectCategories() {
 
     const projectCategories = document.getElementById("projectCategories");
@@ -139,38 +128,46 @@ function loadProjectCategories() {
     `).join("");
 }
 
-function initializeProjectView() {
-
-    const projectContainer = document.getElementById("projectContainer");
-
-    if (!projectContainer) return;
-
-    const gridButton = document.getElementById("gridViewButton");
-
-    const listButton = document.getElementById("listViewButton");
-
-    gridButton.addEventListener("click", () => {
-        projectContainer.classList.remove("listView");
-        gridButton.classList.add("active");
-        listButton.classList.remove("active");
-    });
-
-    listButton.addEventListener("click", () => {
-        projectContainer.classList.add("listView");
-        listButton.classList.add("active");
-        gridButton.classList.remove("active");
-    });
-}
-
-const projectState = {
-    search: "",
-    sort: "default"
-};
-
 function highlightMatch(text, keyword) {
     if (!keyword) return text;
     const regex = new RegExp(`(${keyword})`, "gi");
     return text.replace(regex, "<mark>$1</mark>");
+}
+
+const projectState = {
+    search: ""
+};
+
+function initializeProjectSearch() {
+    const searchInput = document.getElementById("projectSearchInput");
+
+    if (!searchInput) return;
+
+    searchInput.addEventListener("input", () => {
+        projectState.search = searchInput.value.trim();
+        updateProjects();
+    });
+}
+
+function updateProjects() {
+
+    let projects = [...data.projects];
+
+    if (projectState.search !== "") {
+        const keyword = projectState.search.toLowerCase();
+
+        projects = projects.filter(project =>
+            project.title.toLowerCase().includes(keyword) ||
+            project.description.toLowerCase().includes(keyword) ||
+            project.category.toLowerCase().includes(keyword) ||
+            project.status.toLowerCase().includes(keyword) ||
+            project.techStacks.some(tech =>
+                tech.toLowerCase().includes(keyword)
+            )
+        );
+    }
+
+    renderProjects(projects);
 }
 
 function renderProjects(projects) {
@@ -182,7 +179,9 @@ function renderProjects(projects) {
 
     if (projects.length === 0) {
         const keyword = projectState.search;
+
         projectContainer.classList.add("emptyState");
+
         projectContainer.innerHTML = `
             <div class="emptyStateIcon">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -195,20 +194,24 @@ function renderProjects(projects) {
                 <strong>"${keyword}"</strong>.
                 Try another keyword or show all projects.
             </p>
-
             <button class="clearSearchButton">
                 Clear Search
             </button>
         `;
+
         document.querySelector(".clearSearchButton")
             .addEventListener("click", () => {
-                const input = document.getElementById("searchInput");
+                const input = document.getElementById("projectSearchInput");
+
                 input.value = "";
                 projectState.search = "";
+
                 updateProjects();
             });
+
         return;
     }
+
     projectContainer.classList.remove("emptyState");
 
     let html = "";
@@ -268,7 +271,7 @@ function loadProjects() {
     renderProjects(data.projects);
     initializeProjectSearch();
 
-    const searchInput = document.getElementById("searchInput");
+    const searchInput = document.getElementById("projectSearchInput");
 
     if (searchInput) {
         searchInput.addEventListener("input", () => {
@@ -284,25 +287,27 @@ function loadProjects() {
     }
 }
 
-function updateProjects() {
+function initializeProjectView() {
 
-    let projects = [...data.projects];
+    const projectContainer = document.getElementById("projectContainer");
 
-    if (projectState.search !== "") {
-        const keyword = projectState.search.toLowerCase();
+    if (!projectContainer) return;
 
-        projects = projects.filter(project =>
-            project.title.toLowerCase().includes(keyword) ||
-            project.description.toLowerCase().includes(keyword) ||
-            project.category.toLowerCase().includes(keyword) ||
-            project.status.toLowerCase().includes(keyword) ||
-            project.techStacks.some(tech =>
-                tech.toLowerCase().includes(keyword)
-            )
-        );
-    }
+    const gridButton = document.getElementById("gridViewButton");
 
-    renderProjects(projects);
+    const listButton = document.getElementById("listViewButton");
+
+    gridButton.addEventListener("click", () => {
+        projectContainer.classList.remove("listView");
+        gridButton.classList.add("active");
+        listButton.classList.remove("active");
+    });
+
+    listButton.addEventListener("click", () => {
+        projectContainer.classList.add("listView");
+        listButton.classList.add("active");
+        gridButton.classList.remove("active");
+    });
 }
 
 function loadTechBreakdown() {
@@ -443,37 +448,110 @@ function loadCertificationCategories() {
     `).join("");
 }
 
-function loadCertifications() {
+const certificationState = {
+    search: ""
+};
 
+function initializeCertificationSearch() {
+    const searchInput = document.getElementById("certificationSearchInput");
+
+    if (!searchInput) return;
+
+    searchInput.oninput = () => {
+        certificationState.search = searchInput.value.trim();
+        updateCertifications();
+    };
+}
+
+function updateCertifications() {
+
+    let certifications = [...data.certifications];
+
+    if (certificationState.search) {
+        const keyword = certificationState.search.toLowerCase();
+
+        certifications = certifications.filter(certification =>
+            certification.title.toLowerCase().includes(keyword) ||
+            certification.platform.toLowerCase().includes(keyword) ||
+            certification.category.toLowerCase().includes(keyword) ||
+            certification.status.toLowerCase().includes(keyword) ||
+            certification.certificateId.toLowerCase().includes(keyword) ||
+            certification.dateEarned.toLowerCase().includes(keyword)
+        );
+    }
+
+    renderCertifications(certifications);
+}
+
+function renderCertifications(certifications) {
+    
     const certificationContainer = document.getElementById("certificationContainer");
 
     if (!certificationContainer) return;
     if (!data.certifications) return;
 
+    if (certifications.length === 0) {
+        const keyword = certificationState.search;
+
+        certificationContainer.classList.add("emptyState");
+
+        certificationContainer.innerHTML = `
+            <div class="emptyStateIcon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <h2 class="emptyStateTitle">
+                No certifications found
+            </h2>
+            <p class="emptyStateDescription">
+                No results found for
+                <strong>"${keyword}"</strong>.
+                Try another keyword or show all certifications.
+            </p>
+            <button class="clearSearchButton">
+                Clear Search
+            </button>
+        `;
+
+        document.querySelector(".clearSearchButton")
+            .addEventListener("click", () => {
+                const input = document.getElementById("certificationSearchInput");
+
+                input.value = "";
+                certificationState.search = "";
+
+                updateCertifications();
+            });
+
+        return;
+    }
+
+    certificationContainer.classList.remove("emptyState");
+
     let html = "";
 
-    data.certifications.forEach(certification => {
-
+    certifications.forEach(certification => {
         html += `
             <div class="certificationCard">
                 <div class="certificationIcon">
                     <i class="fa-solid fa-globe"></i>
                 </div>
                 <div class="certificationContent">
-                    <h3>${certification.title}</h3>
+                    <h3>${highlightMatch(certification.title, certificationState.search)}</h3>
+
                     <div class="certificationMeta">
-                        <span>${certification.platform}</span>
-                        <span>${certification.dateEarned}</span>
+                        <span>${highlightMatch(certification.platform, certificationState.search)}</span>
+                        <span>${highlightMatch(certification.dateEarned, certificationState.search)}</span>
                     </div>
+
                     <div class="certificationBadges">
                         <span class="certificateId">
-                            ${certification.certificateId}
+                            ${highlightMatch(certification.certificateId, certificationState.search)}
                         </span>
                         <span class="verifiedBadge">
-                            ${certification.status}
+                            ${highlightMatch(certification.status, certificationState.search)}
                         </span>
                         <span class="categoryBadge">
-                            ${certification.category}
+                            ${highlightMatch(certification.category, certificationState.search)}
                         </span>
                     </div>
                 </div>
@@ -482,6 +560,27 @@ function loadCertifications() {
     });
 
     certificationContainer.innerHTML = html;
+}
+
+function loadCertifications() {
+
+    renderCertifications(data.certifications);
+    initializeCertificationSearch();
+
+    const searchInput = document.getElementById("certificationSearchInput");
+    
+    if (searchInput) {
+        searchInput.addEventListener("input", () => {
+            certificationState.search = searchInput.value.trim();
+            updateCertifications();
+        });
+        searchInput.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                searchInput.blur();
+            }
+        });
+    }
 }
 
 function loadQuickStats() {

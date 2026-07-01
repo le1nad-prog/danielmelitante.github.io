@@ -1662,13 +1662,14 @@ body {
     justify-content: center;
 }
 
-.projectContainer.emptyState{
+.projectContainer.emptyState,
+.certificationContainer.emptyState{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
     min-height: 420px;
+    text-align: center;
     gap: 12px;
 }
 
